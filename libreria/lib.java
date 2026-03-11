@@ -44,22 +44,35 @@ public class lib {
         }
     }
 
-    public static boolean primo(int a){
+    public static String primo(int a){
         boolean primo= true;
         int i = 2;
         if (a <=1){
-            //return "el numero es negativo, no es primo";
-            return false;
+            return "el numero es negativo, no es primo";
         }
         while(primo && i <= Math.sqrt(a)){
             if (a % i==0){
                 primo = false;
-                return false;
+                return "El número "+a+" no es primo";
             }else{
                 i++;
             }
         }//whilw
-        return true;
+        return "El número "+a+" es primo";
+    }
+
+    public static String perfecto(int a){
+        int suma = 0;
+        for (int i = 1; i < a; i++) {
+            if (a % i == 0) {
+                suma += i;
+            }
+        }
+        if (suma == a) {
+            return "El número " + a + " es un número perfecto.";
+        } else {
+            return "El número " + a + " no es un número perfecto.";
+        }
     }
 
     public static String numeroPalindromo(int a){
@@ -78,6 +91,9 @@ public class lib {
 
 
     }
+
+    //3- manipulacion de cadenas
+
 
 
 
