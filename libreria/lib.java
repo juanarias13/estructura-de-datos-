@@ -93,6 +93,47 @@ public class lib {
     }
 
     //3- manipulacion de cadenas
+    public static String  contadorVocalesConsonantes(String cadena){
+        int vocales = 0;
+        int consonantes = 0;
+        for (int i = 0; i < cadena.length(); i++) {
+            char c = Character.toLowerCase(cadena.charAt(i));
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                vocales++;
+            } else if (Character.isLetter(c)) {
+                consonantes++;
+            }
+        }
+        return "La cadena '" + cadena + "' tiene " + vocales + " vocales y " + consonantes + " consonantes.";
+
+    }
+
+    public static String invertirCadena(String cadena){
+        String invertida = "";
+        for (int i = cadena.length() - 1; i >= 0; i--) {
+            invertida += cadena.charAt(i);
+        }
+        return "La cadena '" + cadena + "' invertida es: '" + invertida + "'";
+    }
+
+    public static String palabraPalindroma(String cadena){
+        String original = cadena.replaceAll("\\s+", "").toLowerCase();
+        String invertida = "";
+        for (int i = original.length() - 1; i >= 0; i--) {
+            invertida += original.charAt(i);
+        }
+        if (original.equals(invertida)) {
+            return "La palabra '" + cadena + "' es un palíndromo.";
+        } else {
+            return "La palabra '" + cadena + "' no es un palíndromo.";
+        }
+    } 
+
+    public static String contarPalabras(String cadena){
+         String[] palabras = cadena.split("\\s+");
+         return "La cadena '" + cadena + "' tiene " + palabras.length + " palabras.";
+    }
+   
 
 
 
