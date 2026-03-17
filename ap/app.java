@@ -19,6 +19,8 @@ public class app {
         System.out.println(lib.numeroPalindromo(12121));
 
         //3- manipulacion de cadenas
+        System.out.println("----------Manipulación de cadenas:------------");
+        
 
         
 

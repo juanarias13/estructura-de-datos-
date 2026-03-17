@@ -97,13 +97,14 @@ public class lib {
         int vocales = 0;
         int consonantes = 0;
         for (int i = 0; i < cadena.length(); i++) {
-            char c = Character.toLowerCase(cadena.charAt(i));
+            char c = cadena.charAt(i);
+            c = Character.toLowerCase(c);
             if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
                 vocales++;
-            } else if (Character.isLetter(c)) {
+            } else if (c >= 'a' && c <= 'z') {
                 consonantes++;
             }
-        }
+        }//for
         return "La cadena '" + cadena + "' tiene " + vocales + " vocales y " + consonantes + " consonantes.";
 
     }
@@ -112,12 +113,17 @@ public class lib {
         String invertida = "";
         for (int i = cadena.length() - 1; i >= 0; i--) {
             invertida += cadena.charAt(i);
-        }
+        }//for
         return "La cadena '" + cadena + "' invertida es: '" + invertida + "'";
     }
 
     public static String palabraPalindroma(String cadena){
-        String original = cadena.replaceAll("\\s+", "").toLowerCase();
+        String original = "";
+        for (int i = 0; i < cadena.length(); i++) {
+            char c = cadena.charAt(i);
+            if (c == ' ') continue;
+            original += Character.toLowerCase(c);
+        }//for
         String invertida = "";
         for (int i = original.length() - 1; i >= 0; i--) {
             invertida += original.charAt(i);
@@ -127,13 +133,104 @@ public class lib {
         } else {
             return "La palabra '" + cadena + "' no es un palíndromo.";
         }
-    } 
+    }
 
     public static String contarPalabras(String cadena){
-         String[] palabras = cadena.split("\\s+");
-         return "La cadena '" + cadena + "' tiene " + palabras.length + " palabras.";
+        int palabras = 0;
+        boolean enPalabra = false;
+        for (int i = 0; i < cadena.length(); i++) {
+            char c = cadena.charAt(i);
+            if (c != ' ' && c != '\t' && c != '\n' && c != '\r') {
+                if (!enPalabra) {
+                    palabras++;
+                    enPalabra = true;
+                }
+            } else {
+                enPalabra = false;
+            }
+        }//for i
+        return "La cadena '" + cadena + "' tiene " + palabras + " palabras.";
     }
    
+
+    //4. operaciones con listas 
+
+    public static String mayorYmenorElemento(int[] lista){
+        if (lista.length == 0) {
+            return "La lista está vacía.";
+        }
+        int mayor = lista[0];
+        int menor = lista[0];
+        for (int i = 1; i < lista.length; i++) {
+            if (lista[i] > mayor) {
+                mayor = lista[i];
+            }
+            if (lista[i] < menor) {
+                menor = lista[i];
+            }
+        }//for
+        return "El mayor elemento de la lista es: " + mayor + " y el menor elemento es: " + menor;
+    }
+
+    public static String promedioLista(int[] lista){
+        if (lista.length == 0) {
+            return "La lista está vacía.";
+        }
+        int suma = 0;
+        for (int i = 0; i < lista.length; i++) {
+            suma += lista[i];
+        }//for
+        double promedio = (double) suma / lista.length;
+        return "El promedio de la lista es: " + promedio;
+    }
+
+    public static String eliminarDuplicados(int[] lista){
+        if (lista.length == 0) {
+            return "La lista está vacía.";
+        }
+        String resultado = "La lista sin duplicados es: ";
+        for (int i = 0; i < lista.length; i++) {
+            boolean duplicado = false;
+            for (int j = 0; j < i; j++) {
+                if (lista[i] == lista[j]) {
+                    duplicado = true;
+                    break;
+                }//for j
+            }
+            if (!duplicado) {
+                resultado += lista[i] + " ";
+            }
+        }//for i
+        return resultado.trim();
+    }
+
+    public static int[] ordenarLista(int[] lista){
+        
+        int n = lista.length;
+        for (int i = 0; i < n - 1; i++) {
+            boolean intercambiado = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (lista[j] > lista[j + 1]) {
+                    int temp = lista[j];
+                    lista[j] = lista[j + 1];
+                    lista[j + 1] = temp;
+                    intercambiado = true;
+                }
+            }//forj
+           
+            if (!intercambiado) {
+                break;
+            }
+        }//fori
+        return lista;
+    }
+  
+
+
+
+    
+
+
 
 
 
