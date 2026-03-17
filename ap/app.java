@@ -20,6 +20,28 @@ public class app {
 
         //3- manipulacion de cadenas
         System.out.println("----------Manipulación de cadenas:------------");
+        System.out.println(lib.contadorVocalesConsonantes("Hola Mundo"));
+        System.out.println(lib.invertirCadena("Hola Mundo"));
+        System.out.println(lib.palabraPalindroma("lol"));
+        System.out.println(lib.contarPalabras("Hola Mundo, ¿cómo estás?"));
+
+        // 4.Operaciones con Listas
+        System.out.println("----------Operaciones con Listas:------------");
+        int [] numeros = {5, 3, 8, 1, 4};
+        int [] numeros2 = {5, 8, 8, 4, 4};
+        System.out.println(lib.mayorYmenorElemento(numeros));
+        System.out.println(lib.promedioLista(numeros));
+        System.out.println(lib.eliminarDuplicados(numeros2));
+        System.out.println(lib.ordenarLista(numeros));
+
+
+
+
+
+
+
+
+
         
 
         
