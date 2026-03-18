@@ -1,4 +1,7 @@
 package libreria;
+
+import java.util.Scanner;
+
 public class lib {
 
     //1.calculadora de operaciones
@@ -224,6 +227,226 @@ public class lib {
         }//fori
         return lista;
     }
+
+    // 5. Conversor de Unidades
+    public static void menuConversor(Scanner scanner) {
+        while (true) {
+            System.out.println("\n=== Menú de Conversor de Unidades ===");
+            System.out.println("1) Temperatura (Celsius, Fahrenheit, Kelvin)");
+            System.out.println("2) Longitud (metros, kilómetros, millas)");
+            System.out.println("3) Peso (kilogramos, libras, onzas)");
+            System.out.println("4) Tiempo (segundos, minutos, horas)");
+            System.out.println("0) Salir");
+            System.out.print("Seleccione una opción: ");
+            String opcion = scanner.nextLine().trim();
+
+            switch (opcion) {
+                case "1":
+                    menuTemperatura(scanner);
+                    break;
+                case "2":
+                    menuLongitud(scanner);
+                    break;
+                case "3":
+                    menuPeso(scanner);
+                    break;
+                case "4":
+                    menuTiempo(scanner);
+                    break;
+                case "0":
+                    System.out.println("Saliendo del conversor de unidades.");
+                    return;
+                default:
+                    System.out.println("Opción inválida. Intente de nuevo.");
+            }
+        }
+    }
+
+    private static void menuTemperatura(Scanner scanner) {
+        System.out.println("\n--- Conversión de Temperatura ---");
+        System.out.println("1) Celsius -> Fahrenheit");
+        System.out.println("2) Celsius -> Kelvin");
+        System.out.println("3) Fahrenheit -> Celsius");
+        System.out.println("4) Fahrenheit -> Kelvin");
+        System.out.println("5) Kelvin -> Celsius");
+        System.out.println("6) Kelvin -> Fahrenheit");
+        System.out.print("Elija una conversión: ");
+        String opcion = scanner.nextLine().trim();
+        System.out.print("Ingrese el valor: ");
+        double valor = parseDoubleInput(scanner.nextLine());
+
+        switch (opcion) {
+            case "1":
+                System.out.printf("%.2f °C = %.2f °F\n", valor, celsiusToFahrenheit(valor));
+                break;
+            case "2":
+                System.out.printf("%.2f °C = %.2f K\n", valor, celsiusToKelvin(valor));
+                break;
+            case "3":
+                System.out.printf("%.2f °F = %.2f °C\n", valor, fahrenheitToCelsius(valor));
+                break;
+            case "4":
+                System.out.printf("%.2f °F = %.2f K\n", valor, fahrenheitToKelvin(valor));
+                break;
+            case "5":
+                System.out.printf("%.2f K = %.2f °C\n", valor, kelvinToCelsius(valor));
+                break;
+            case "6":
+                System.out.printf("%.2f K = %.2f °F\n", valor, kelvinToFahrenheit(valor));
+                break;
+            default:
+                System.out.println("Opción inválida de temperatura.");
+        }
+    }
+
+    private static void menuLongitud(Scanner scanner) {
+        System.out.println("\n--- Conversión de Longitud ---");
+        System.out.println("1) Metros -> Kilómetros");
+        System.out.println("2) Metros -> Millas");
+        System.out.println("3) Kilómetros -> Metros");
+        System.out.println("4) Kilómetros -> Millas");
+        System.out.println("5) Millas -> Metros");
+        System.out.println("6) Millas -> Kilómetros");
+        System.out.print("Elija una conversión: ");
+        String opcion = scanner.nextLine().trim();
+        System.out.print("Ingrese el valor: ");
+        double valor = parseDoubleInput(scanner.nextLine());
+
+        switch (opcion) {
+            case "1":
+                System.out.printf("%.2f m = %.4f km\n", valor, valor / 1000.0);
+                break;
+            case "2":
+                System.out.printf("%.2f m = %.4f mi\n", valor, valor / 1609.34);
+                break;
+            case "3":
+                System.out.printf("%.2f km = %.2f m\n", valor, valor * 1000.0);
+                break;
+            case "4":
+                System.out.printf("%.2f km = %.4f mi\n", valor, valor / 1.60934);
+                break;
+            case "5":
+                System.out.printf("%.2f mi = %.2f m\n", valor, valor * 1609.34);
+                break;
+            case "6":
+                System.out.printf("%.2f mi = %.4f km\n", valor, valor * 1.60934);
+                break;
+            default:
+                System.out.println("Opción inválida de longitud.");
+        }
+    }
+
+    private static void menuPeso(Scanner scanner) {
+        System.out.println("\n--- Conversión de Peso ---");
+        System.out.println("1) Kilogramos -> Libras");
+        System.out.println("2) Kilogramos -> Onzas");
+        System.out.println("3) Libras -> Kilogramos");
+        System.out.println("4) Libras -> Onzas");
+        System.out.println("5) Onzas -> Kilogramos");
+        System.out.println("6) Onzas -> Libras");
+        System.out.print("Elija una conversión: ");
+        String opcion = scanner.nextLine().trim();
+        System.out.print("Ingrese el valor: ");
+        double valor = parseDoubleInput(scanner.nextLine());
+
+        switch (opcion) {
+            case "1":
+                System.out.printf("%.2f kg = %.2f lb\n", valor, valor * 2.20462);
+                break;
+            case "2":
+                System.out.printf("%.2f kg = %.2f oz\n", valor, valor * 35.274);
+                break;
+            case "3":
+                System.out.printf("%.2f lb = %.2f kg\n", valor, valor / 2.20462);
+                break;
+            case "4":
+                System.out.printf("%.2f lb = %.2f oz\n", valor, valor * 16.0);
+                break;
+            case "5":
+                System.out.printf("%.2f oz = %.4f kg\n", valor, valor / 35.274);
+                break;
+            case "6":
+                System.out.printf("%.2f oz = %.4f lb\n", valor, valor / 16.0);
+                break;
+            default:
+                System.out.println("Opción inválida de peso.");
+        }
+    }
+
+    private static void menuTiempo(Scanner scanner) {
+        System.out.println("\n--- Conversión de Tiempo ---");
+        System.out.println("1) Segundos -> Minutos");
+        System.out.println("2) Segundos -> Horas");
+        System.out.println("3) Minutos -> Segundos");
+        System.out.println("4) Minutos -> Horas");
+        System.out.println("5) Horas -> Segundos");
+        System.out.println("6) Horas -> Minutos");
+        System.out.print("Elija una conversión: ");
+        String opcion = scanner.nextLine().trim();
+        System.out.print("Ingrese el valor: ");
+        double valor = parseDoubleInput(scanner.nextLine());
+
+        switch (opcion) {
+            case "1":
+                System.out.printf("%.2f s = %.4f min\n", valor, valor / 60.0);
+                break;
+            case "2":
+                System.out.printf("%.2f s = %.6f h\n", valor, valor / 3600.0);
+                break;
+            case "3":
+                System.out.printf("%.2f min = %.2f s\n", valor, valor * 60.0);
+                break;
+            case "4":
+                System.out.printf("%.2f min = %.4f h\n", valor, valor / 60.0);
+                break;
+            case "5":
+                System.out.printf("%.2f h = %.2f s\n", valor, valor * 3600.0);
+                break;
+            case "6":
+                System.out.printf("%.2f h = %.2f min\n", valor, valor * 60.0);
+                break;
+            default:
+                System.out.println("Opción inválida de tiempo.");
+        }
+    }
+
+    private static double parseDoubleInput(String input) {
+        try {
+            return Double.parseDouble(input.trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada inválida. Se usará 0.");
+            return 0.0;
+        }
+    }
+
+    private static double celsiusToFahrenheit(double c) {
+        return c * 9.0 / 5.0 + 32;
+    }
+
+    private static double celsiusToKelvin(double c) {
+        return c + 273.15;
+    }
+
+    private static double fahrenheitToCelsius(double f) {
+        return (f - 32) * 5.0 / 9.0;
+    }
+
+    private static double fahrenheitToKelvin(double f) {
+        return celsiusToKelvin(fahrenheitToCelsius(f));
+    }
+
+    private static double kelvinToCelsius(double k) {
+        return k - 273.15;
+    }
+
+    private static double kelvinToFahrenheit(double k) {
+        return celsiusToFahrenheit(kelvinToCelsius(k));
+    }
+
+
+
+    
+
   
 
 

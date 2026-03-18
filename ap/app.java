@@ -1,7 +1,10 @@
 package ap;
 import libreria.lib;
+import java.util.Scanner;
 public class app {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         // 1- calculadora de operaciones basicas 
         System.out.println("----------Calculadora de operaciones básicas:------------");
         System.out.println(lib.sumar(5, 3));
@@ -33,6 +36,19 @@ public class app {
         System.out.println(lib.promedioLista(numeros));
         System.out.println(lib.eliminarDuplicados(numeros2));
         System.out.println(lib.ordenarLista(numeros));
+
+        // 5. Conversor de Unidades
+        System.out.println("----------Conversor de Unidades:------------");
+        System.out.println("¿Desea entrar al menú de conversión de unidades? (si/no)");
+        String respuesta = scanner.nextLine().trim().toLowerCase();
+        if (respuesta.equals("si") || respuesta.equals("s")) {
+            lib.menuConversor(scanner);
+        } else {
+            System.out.println("Gracias por usar el programa.");
+        }
+         
+
+
 
 
 
