@@ -3,7 +3,7 @@ package libreria;
 import java.util.Scanner;
 
 public class lib {
-
+    
     //1.calculadora de operaciones
     public static int sumar(int a, int b) {
         return a + b;
@@ -442,24 +442,4 @@ public class lib {
     private static double kelvinToFahrenheit(double k) {
         return celsiusToFahrenheit(kelvinToCelsius(k));
     }
-
-
-
-    
-
-  
-
-
-
-    
-
-
-
-
-
-
-    
-
-
-
 }
