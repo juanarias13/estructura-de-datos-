@@ -1,5 +1,7 @@
 package ap;
+import java.util.Arrays;
 import java.util.Scanner;
+import libreria.HerenciaPolimorfismo;
 import libreria.SistemaGestion;
 import libreria.lib;
 
@@ -38,7 +40,7 @@ public class app {
         System.out.println(lib.mayorYmenorElemento(numeros));
         System.out.println(lib.promedioLista(numeros));
         System.out.println(lib.eliminarDuplicados(numeros2));
-        System.out.println(lib.ordenarLista(numeros));
+        System.out.println(Arrays.toString(lib.ordenarLista(numeros)));
 
         // 5. Conversor de Unidades
         System.out.println("----------Conversor de Unidades:------------");
@@ -52,6 +54,10 @@ public class app {
 
         //-----------------------------NIVEL2: ESTRUCTURA DE DATOS Y CLASES BASICAS------------------------------
 
-        SistemaGestion.iniciarSistema();
+        SistemaGestion.iniciarSistema(scanner);
+
+        //-----------------------------NIVEL3: HERENCIA Y POLIMORFISMO------------------------------
+        HerenciaPolimorfismo.iniciarHerenciaPolimorfismo(scanner);
+        
     }
 }

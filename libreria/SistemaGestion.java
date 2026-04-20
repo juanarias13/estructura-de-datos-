@@ -199,6 +199,11 @@ public class SistemaGestion {
 
     // ==================== MÉTODO PRINCIPAL ====================
     public static void iniciarSistema() {
+        iniciarSistema(entrada);
+    }
+
+    public static void iniciarSistema(Scanner scanner) {
+        entrada = scanner;
         int opcionPrincipal = 0;
 
         System.out.println("╔════════════════════════════════════════════╗");
